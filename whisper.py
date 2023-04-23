@@ -3,7 +3,7 @@ import speech_recognition as sr
 import os
 
 openai.organization = "org-Om6vnsWVREzBoRZGuOnk9XJZ"
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Configura el reconocimiento de voz
 r = sr.Recognizer()
