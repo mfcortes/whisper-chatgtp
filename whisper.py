@@ -1,9 +1,16 @@
+from elevenlabs import generate, play
 import openai
 import speech_recognition as sr
 import os
+import playsound
+from elevenlabs import set_api_key
+set_api_key("1234567890")
+
+# Me equivoque
+
 
 openai.organization = "org-Om6vnsWVREzBoRZGuOnk9XJZ"
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Configura el reconocimiento de voz
 r = sr.Recognizer()
@@ -44,7 +51,19 @@ response = openai.Completion.create(
 
 # Imprime la respuesta generada
 print("RESPUESTA DE CHAT GPT")
-print(response.choices[0].text.strip())
+salida = response.choices[0].text.strip()
+print(salida)
 
 # Elimina el archivo temporal de audio
 os.remove("audio.wav")
+
+# seccion para pasar a audio
+
+
+voice = "Bella"
+audio = generate(
+    text=f",  {salida}",
+    voice=voice
+)
+
+play(audio)
